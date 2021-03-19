@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Prod_OroPuroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="IMF_SP_Ventas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicial" Type="date" Mode="In" />
+          <Parameter Name="fecha_final" Type="date" Mode="In" />
+          <Parameter Name="ruta" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipo_tienda" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipo_presentacion" Type="char" Mode="In" />
+          <Parameter Name="agupar" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SBO_SP_IMF_LoginWeb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Prod_OroPuroModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Prod_OroPuroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Prod_OroPuroEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="IMF_SP_Ventas" ReturnType="Collection(Prod_OroPuroModel.IMF_SP_Ventas_Result)">
+            <Parameter Name="fecha_inicial" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_final" Mode="In" Type="DateTime" />
+            <Parameter Name="ruta" Mode="In" Type="String" />
+            <Parameter Name="tipo_tienda" Mode="In" Type="String" />
+            <Parameter Name="tipo_presentacion" Mode="In" Type="String" />
+            <Parameter Name="agupar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SBO_SP_IMF_LoginWeb" ReturnType="Collection(Prod_OroPuroModel.SBO_SP_IMF_LoginWeb_Result)">
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="IMF_SP_Ventas_Result">
+          <Property Type="Int32" Name="DocEntry" Nullable="false" />
+          <Property Type="Int32" Name="DocNum" Nullable="true" />
+          <Property Type="DateTime" Name="DocDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CardCode" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CardName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NumAtCard" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="VatSum" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="Decimal" Name="DocTotal" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="Int32" Name="LineNum" Nullable="false" />
+          <Property Type="Int32" Name="TargetType" Nullable="true" />
+          <Property Type="Int32" Name="TrgetEntry" Nullable="true" />
+          <Property Type="String" Name="BaseRef" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="BaseType" Nullable="true" />
+          <Property Type="Int32" Name="BaseEntry" Nullable="true" />
+          <Property Type="Int32" Name="BaseLine" Nullable="true" />
+          <Property Type="String" Name="LineStatus" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ItemCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dscription" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="Decimal" Name="Litros" Nullable="true" Precision="38" Scale="11" />
+          <Property Type="Decimal" Name="Kilos" Nullable="true" Precision="38" Scale="11" />
+          <Property Type="Decimal" Name="OpenQty" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="Decimal" Name="LineTotal" Nullable="true" Precision="19" Scale="6" />
+          <Property Type="String" Name="WhsCode" Nullable="true" MaxLength="8" />
+          <Property Type="Int32" Name="SlpCode" Nullable="true" />
+          <Property Type="String" Name="SlpName" Nullable="false" MaxLength="155" />
+          <Property Type="String" Name="U_CentroCost" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="U_CardCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="U_CardName" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="U_TipoCliente" Nullable="true" />
+          <Property Type="String" Name="Descr" Nullable="true" MaxLength="254" />
+          <Property Type="String" Name="U_StrFolio" Nullable="true" MaxLength="9" />
+          <Property Type="String" Name="U_QR" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SBO_SP_IMF_LoginWeb_Result">
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="String" Name="U_UserCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="U_Inventario" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_Compras" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_Ventas" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_Produccion" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_SN" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_Costo" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="U_Precios" Nullable="true" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Prod_OroPuroModelStoreContainer" CdmEntityContainer="Prod_OroPuroEntities" >
+          <FunctionImportMapping FunctionImportName="IMF_SP_Ventas" FunctionName="Prod_OroPuroModel.Store.IMF_SP_Ventas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Prod_OroPuroModel.IMF_SP_Ventas_Result">
+                <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="NumAtCard" ColumnName="NumAtCard" />
+                <ScalarProperty Name="VatSum" ColumnName="VatSum" />
+                <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+                <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+                <ScalarProperty Name="TargetType" ColumnName="TargetType" />
+                <ScalarProperty Name="TrgetEntry" ColumnName="TrgetEntry" />
+                <ScalarProperty Name="BaseRef" ColumnName="BaseRef" />
+                <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+                <ScalarProperty Name="BaseEntry" ColumnName="BaseEntry" />
+                <ScalarProperty Name="BaseLine" ColumnName="BaseLine" />
+                <ScalarProperty Name="LineStatus" ColumnName="LineStatus" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Dscription" ColumnName="Dscription" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Litros" ColumnName="Litros" />
+                <ScalarProperty Name="Kilos" ColumnName="Kilos" />
+                <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="WhsCode" ColumnName="WhsCode" />
+                <ScalarProperty Name="SlpCode" ColumnName="SlpCode" />
+                <ScalarProperty Name="SlpName" ColumnName="SlpName" />
+                <ScalarProperty Name="U_CentroCost" ColumnName="U_CentroCost" />
+                <ScalarProperty Name="U_CardCode" ColumnName="U_CardCode" />
+                <ScalarProperty Name="U_CardName" ColumnName="U_CardName" />
+                <ScalarProperty Name="U_TipoCliente" ColumnName="U_TipoCliente" />
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="U_StrFolio" ColumnName="U_StrFolio" />
+                <ScalarProperty Name="U_QR" ColumnName="U_QR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SBO_SP_IMF_LoginWeb" FunctionName="Prod_OroPuroModel.Store.SBO_SP_IMF_LoginWeb">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Prod_OroPuroModel.SBO_SP_IMF_LoginWeb_Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="U_UserCode" ColumnName="U_UserCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="U_Inventario" ColumnName="U_Inventario" />
+                <ScalarProperty Name="U_Compras" ColumnName="U_Compras" />
+                <ScalarProperty Name="U_Ventas" ColumnName="U_Ventas" />
+                <ScalarProperty Name="U_Produccion" ColumnName="U_Produccion" />
+                <ScalarProperty Name="U_SN" ColumnName="U_SN" />
+                <ScalarProperty Name="U_Costo" ColumnName="U_Costo" />
+                <ScalarProperty Name="U_Precios" ColumnName="U_Precios" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

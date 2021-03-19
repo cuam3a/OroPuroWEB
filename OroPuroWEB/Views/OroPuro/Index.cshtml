@@ -1,0 +1,34 @@
+﻿@model OroPuroWEB.Models.Usuarios.LoginDatos
+<body class="login">
+    <div>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Index", "OroPuro", FormMethod.Post, new { role = "form" }))
+                    {
+                        <div>
+                            <img class="thumbnail image" src="~/Images/Logo.png" />
+                        </div>
+                        <h4 class="font-weight-bold">ORO PURO WEB</h4>
+                        <div class="separator">
+                            <div class="mt-2">
+                                <input type="text" class="form-control text-center" placeholder="Usuario" required="" id="Usuario" name="Usuario" value="@Model.Usuario" />
+                            </div>
+                            <div>
+                                <input type="password" class="form-control text-center" placeholder="Contraseña" required="" id="Contrasena" name="Contrasena" value="@Model.Contrasena" />
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-oropuro col-md-12 text-white" type="submit">ENTRAR</button>
+                            </div>
+                        </div>
+                        <div class="separator">
+                            <div class="mt-5">
+                                <p>©2021 DERECHOS RESERVADOS A PRODUCTOS LACTEOS ORO PURO S DE RL DE CV</p>
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</body>

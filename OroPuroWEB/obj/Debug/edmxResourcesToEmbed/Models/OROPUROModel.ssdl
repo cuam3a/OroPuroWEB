@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Prod_OroPuroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="IMF_SP_Ventas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_inicial" Type="date" Mode="In" />
+    <Parameter Name="fecha_final" Type="date" Mode="In" />
+    <Parameter Name="ruta" Type="nvarchar" Mode="In" />
+    <Parameter Name="tipo_tienda" Type="nvarchar" Mode="In" />
+    <Parameter Name="tipo_presentacion" Type="char" Mode="In" />
+    <Parameter Name="agupar" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SBO_SP_IMF_LoginWeb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Prod_OroPuroModelStoreContainer" />
+</Schema>

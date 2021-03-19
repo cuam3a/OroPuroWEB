@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Prod_OroPuroModelStoreContainer" CdmEntityContainer="Prod_OroPuroEntities">
+    <FunctionImportMapping FunctionImportName="IMF_SP_Ventas" FunctionName="Prod_OroPuroModel.Store.IMF_SP_Ventas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Prod_OroPuroModel.IMF_SP_Ventas_Result">
+          <ScalarProperty Name="DocEntry" ColumnName="DocEntry" />
+          <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="NumAtCard" ColumnName="NumAtCard" />
+          <ScalarProperty Name="VatSum" ColumnName="VatSum" />
+          <ScalarProperty Name="DocTotal" ColumnName="DocTotal" />
+          <ScalarProperty Name="LineNum" ColumnName="LineNum" />
+          <ScalarProperty Name="TargetType" ColumnName="TargetType" />
+          <ScalarProperty Name="TrgetEntry" ColumnName="TrgetEntry" />
+          <ScalarProperty Name="BaseRef" ColumnName="BaseRef" />
+          <ScalarProperty Name="BaseType" ColumnName="BaseType" />
+          <ScalarProperty Name="BaseEntry" ColumnName="BaseEntry" />
+          <ScalarProperty Name="BaseLine" ColumnName="BaseLine" />
+          <ScalarProperty Name="LineStatus" ColumnName="LineStatus" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Dscription" ColumnName="Dscription" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Litros" ColumnName="Litros" />
+          <ScalarProperty Name="Kilos" ColumnName="Kilos" />
+          <ScalarProperty Name="OpenQty" ColumnName="OpenQty" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="WhsCode" ColumnName="WhsCode" />
+          <ScalarProperty Name="SlpCode" ColumnName="SlpCode" />
+          <ScalarProperty Name="SlpName" ColumnName="SlpName" />
+          <ScalarProperty Name="U_CentroCost" ColumnName="U_CentroCost" />
+          <ScalarProperty Name="U_CardCode" ColumnName="U_CardCode" />
+          <ScalarProperty Name="U_CardName" ColumnName="U_CardName" />
+          <ScalarProperty Name="U_TipoCliente" ColumnName="U_TipoCliente" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="U_StrFolio" ColumnName="U_StrFolio" />
+          <ScalarProperty Name="U_QR" ColumnName="U_QR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SBO_SP_IMF_LoginWeb" FunctionName="Prod_OroPuroModel.Store.SBO_SP_IMF_LoginWeb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Prod_OroPuroModel.SBO_SP_IMF_LoginWeb_Result">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="U_UserCode" ColumnName="U_UserCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="U_Inventario" ColumnName="U_Inventario" />
+          <ScalarProperty Name="U_Compras" ColumnName="U_Compras" />
+          <ScalarProperty Name="U_Ventas" ColumnName="U_Ventas" />
+          <ScalarProperty Name="U_Produccion" ColumnName="U_Produccion" />
+          <ScalarProperty Name="U_SN" ColumnName="U_SN" />
+          <ScalarProperty Name="U_Costo" ColumnName="U_Costo" />
+          <ScalarProperty Name="U_Precios" ColumnName="U_Precios" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
