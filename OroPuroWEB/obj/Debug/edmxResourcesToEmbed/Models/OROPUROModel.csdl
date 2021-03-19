@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Prod_OroPuroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Prod_OroPuroEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="IMF_SP_Ventas" ReturnType="Collection(Prod_OroPuroModel.IMF_SP_Ventas_Result)">
+      <Parameter Name="fecha_inicial" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_final" Mode="In" Type="DateTime" />
+      <Parameter Name="ruta" Mode="In" Type="String" />
+      <Parameter Name="tipo_tienda" Mode="In" Type="String" />
+      <Parameter Name="tipo_presentacion" Mode="In" Type="String" />
+      <Parameter Name="agupar" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SBO_SP_IMF_LoginWeb" ReturnType="Collection(Prod_OroPuroModel.SBO_SP_IMF_LoginWeb_Result)">
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="IMF_SP_Ventas_Result">
+    <Property Type="Int32" Name="DocEntry" Nullable="false" />
+    <Property Type="Int32" Name="DocNum" Nullable="true" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CardCode" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="CardName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NumAtCard" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="VatSum" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="Decimal" Name="DocTotal" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="Int32" Name="LineNum" Nullable="false" />
+    <Property Type="Int32" Name="TargetType" Nullable="true" />
+    <Property Type="Int32" Name="TrgetEntry" Nullable="true" />
+    <Property Type="String" Name="BaseRef" Nullable="true" MaxLength="16" />
+    <Property Type="Int32" Name="BaseType" Nullable="true" />
+    <Property Type="Int32" Name="BaseEntry" Nullable="true" />
+    <Property Type="Int32" Name="BaseLine" Nullable="true" />
+    <Property Type="String" Name="LineStatus" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ItemCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Dscription" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="Decimal" Name="Litros" Nullable="true" Precision="38" Scale="11" />
+    <Property Type="Decimal" Name="Kilos" Nullable="true" Precision="38" Scale="11" />
+    <Property Type="Decimal" Name="OpenQty" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="Decimal" Name="LineTotal" Nullable="true" Precision="19" Scale="6" />
+    <Property Type="String" Name="WhsCode" Nullable="true" MaxLength="8" />
+    <Property Type="Int32" Name="SlpCode" Nullable="true" />
+    <Property Type="String" Name="SlpName" Nullable="false" MaxLength="155" />
+    <Property Type="String" Name="U_CentroCost" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="U_CardCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="U_CardName" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="U_TipoCliente" Nullable="true" />
+    <Property Type="String" Name="Descr" Nullable="true" MaxLength="254" />
+    <Property Type="String" Name="U_StrFolio" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="U_QR" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="SBO_SP_IMF_LoginWeb_Result">
+    <Property Type="Int32" Name="Status" Nullable="true" />
+    <Property Type="String" Name="U_UserCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="U_Inventario" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_Compras" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_Ventas" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_Produccion" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_SN" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_Costo" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="U_Precios" Nullable="true" MaxLength="1" />
+  </ComplexType>
+</Schema>

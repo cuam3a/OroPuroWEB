@@ -1,0 +1,143 @@
+﻿@model List<OroPuroWEB.Models.Ventas.VentaLitrosKilos>
+@{
+    ViewBag.Title = "VentasLitrosKilos";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2 small">
+        <label for="fechaInicio" class="col-md-12">Fecha Inicio</label>
+        <input class="form-control form-control-sm col-md-12" type="date" id="fechaInicio" value="@ViewBag.FechaInicio" />
+    </div>
+    <div class="col-md-2 small">
+        <label for="fechaFin" class="col-md-12">Fecha Fin</label>
+        <input class="form-control form-control-sm" type="date" id="fechaFin" value="@ViewBag.FechaFin" />
+    </div>
+    <div class="col-md-2 small">
+        <label for="ruta" class="col-md-12">Ruta</label>
+        <select id="ruta" class="form-control form-control-sm col-md-12">
+            <option value="" @(ViewBag.Ruta == "" ? "selected" : "")>TODO</option>
+            <option value="R-01" @(ViewBag.Ruta == "R-01" ? "selected" : "")>RUTA 01</option>
+            <option value="R-02" @(ViewBag.Ruta == "R-02" ? "selected" : "")>RUTA 02</option>
+            <option value="R-03" @(ViewBag.Ruta == "R-03" ? "selected" : "")>RUTA 03</option>
+            <option value="R-10" @(ViewBag.Ruta == "R-10" ? "selected" : "")>RUTA 10</option>
+            <option value="R-11" @(ViewBag.Ruta == "R-11" ? "selected" : "")>RUTA 11</option>
+            <option value="R-12" @(ViewBag.Ruta == "R-12" ? "selected" : "")>RUTA 12</option>
+            <option value="R-20" @(ViewBag.Ruta == "R-20" ? "selected" : "")>RUTA 20</option>
+            <option value="R-21" @(ViewBag.Ruta == "R-21" ? "selected" : "")>RUTA 21</option>
+            <option value="R-30" @(ViewBag.Ruta == "R-30" ? "selected" : "")>RUTA 30</option>
+            <option value="R-40" @(ViewBag.Ruta == "R-40" ? "selected" : "")>RUTA 40</option>
+            <option value="R-50" @(ViewBag.Ruta == "R-50" ? "selected" : "")>RUTA 50</option>
+        </select>
+    </div>
+    <div class="col-md-2 small">
+        <label for="tipoTienda" class="col-md-12">Tipo Tienda</label>
+        <select id="tipoTienda" class="form-control form-control-sm col-md-12">
+            <option value="" @(ViewBag.Tienda == "" ? "selected" : "")>TODO</option>
+            <option value="1" @(ViewBag.Tienda == "1" ? "selected" : "")>ABARROTES</option>
+            <option value="2" @(ViewBag.Tienda == "2" ? "selected" : "")>SUPERS</option>
+            <option value="3" @(ViewBag.Tienda == "3" ? "selected" : "")>AUTOSERVICIO</option>
+            <option value="4" @(ViewBag.Tienda == "4" ? "selected" : "")>ABARREY</option>
+            <option value="5" @(ViewBag.Tienda == "5" ? "selected" : "")>SUPER DEL NORTE</option>
+            <option value="6" @(ViewBag.Tienda == "6" ? "selected" : "")>HOTELES</option>
+            <option value="7" @(ViewBag.Tienda == "7" ? "selected" : "")>FATIMA</option>
+            <option value="8" @(ViewBag.Tienda == "8" ? "selected" : "")>OXXO</option>
+        </select>
+    </div>
+    <div class="col-md-3 small">
+        
+    </div>
+    <div class="col-md-1 small">
+        <label for="buscar" class="col-md-12">.</label>
+        <button class="btn btn-sm btn-oropuro col-md-12 text-white" onclick="pressBuscar()"><i class="fa fa-search"></i></button>
+    </div>
+    @if (Model.Count > 0)
+    {
+        var Productos = Model.Select(s => new { s.CodigoProducto, s.Producto }).OrderBy(o => o.CodigoProducto).Distinct();
+
+        <div class="row" style="max-height: 600px; max-width: 20000px;overflow-y: auto; overflow-x:auto">
+            <table id="" class="table table-bordered small" style="width:100%;">
+                <thead class="text-center font-weight-bold">
+                    <tr>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">RUTA</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">FECHA</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">CODIGO</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:180px" rowspan="2">CLIENTE</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">FOLIO</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">TIENDA</th>
+                        <th style="position: sticky; top: 0; background:lightgray; min-width:80px" rowspan="2">TOTAL</th>
+                        @foreach (var Item in Productos)
+                        {
+                            <th style="position: sticky; top: 0; background:lightgray; min-width:210px" colspan="3">@Item.CodigoProducto<br /><span class="text-truncate">@Item.Producto</span></th>
+                        }
+                    </tr>
+                    <tr>
+                        @foreach (var Item in Productos)
+                        {
+                            <th style="position: sticky; top: 55px; background:lightgray; min-width:50px"> CANT.</th>
+                            <th style="position: sticky; top: 55px; background:lightgray; min-width:80px">LT/KG</th>
+                            <th style="position: sticky; top: 55px; background:lightgray; min-width:80px"> TOTAL</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var Item in Model.GroupBy(g => new { g.id, g.Ruta, g.CodigoCliente, g.Cliente, g.FechaVenta, g.Folio, g.Tienda }).Select(s => s.Key))
+                    {
+                    <tr>
+                        <th>@Item.Ruta</th>
+                        <th>@Item.FechaVenta.ToString("dd-MM-yyyy")</th>
+                        <th>@Item.CodigoCliente</th>
+                        <th>@Item.Cliente</th>
+                        <th>@Item.Folio</th>
+                        <th>@Item.Tienda</th>
+                        <th>$ @Model.Where(w => w.id == Item.id && w.Ruta == Item.Ruta && w.CodigoCliente == Item.CodigoCliente && w.FechaVenta == Item.FechaVenta && w.Folio == Item.Folio && w.Tienda == Item.Tienda).Sum(s => s.Total).ToString("N2")</th>
+                        @foreach (var Prod in Productos)
+                        {
+                            var Lt = Model.Where(w => w.id == Item.id && w.Ruta == Item.Ruta && w.CodigoCliente == Item.CodigoCliente && w.FechaVenta == Item.FechaVenta && w.Folio == Item.Folio && w.Tienda == Item.Tienda && w.CodigoProducto == Prod.CodigoProducto).Sum(s => s.Litros);
+                            var Kg = Model.Where(w => w.id == Item.id && w.Ruta == Item.Ruta && w.CodigoCliente == Item.CodigoCliente && w.FechaVenta == Item.FechaVenta && w.Folio == Item.Folio && w.Tienda == Item.Tienda && w.CodigoProducto == Prod.CodigoProducto).Sum(s => s.Kilos);
+                            var Can = Model.Where(w => w.id == Item.id && w.Ruta == Item.Ruta && w.CodigoCliente == Item.CodigoCliente && w.FechaVenta == Item.FechaVenta && w.Folio == Item.Folio && w.Tienda == Item.Tienda && w.CodigoProducto == Prod.CodigoProducto).Sum(s => s.Cantidad);
+                            var Tot = Model.Where(w => w.id == Item.id && w.Ruta == Item.Ruta && w.CodigoCliente == Item.CodigoCliente && w.FechaVenta == Item.FechaVenta && w.Folio == Item.Folio && w.Tienda == Item.Tienda && w.CodigoProducto == Prod.CodigoProducto).Sum(s => s.Total);
+
+                            <th>
+                                @if (Can > 0)
+                                {
+                                    <span>@Can.ToString("N0")</span>
+                                }
+                            </th>
+                            <th>
+                                @if (Lt > 0)
+                                {
+                                    <span>@Lt.ToString("N2") LT</span>
+                                    <br />}
+                                @if (Kg > 0)
+                                {
+                                    <span>@Kg.ToString("N2") KG</span>}
+                            </th>
+                            <th>
+                                @if (Tot > 0)
+                                {
+                                    <span>$ @Tot.ToString("N2")</span>
+                                }
+                            </th>
+                        }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+<script>
+    let pressBuscar = () => {
+        let fechaInicio = $("#fechaInicio").val();
+        let fechaFin = $("#fechaFin").val();
+        let ruta = $("#ruta").val();
+        let tipoTienda = $("#tipoTienda").val();
+        window.location.href = ("@Html.Raw(Url.Action("VentasLitrosKilos", "OroPuro", new { _FechaInicio = "param1", _FechaFin = "param2", _Ruta = "param3", _Tienda = "param4" }))").replace("param1", fechaInicio).replace("param2", fechaFin).replace("param3", ruta).replace("param4", tipoTienda)
+    }
+
+    let pressImprimirReporte = (accion) => {
+
+    }
+</script>
+
